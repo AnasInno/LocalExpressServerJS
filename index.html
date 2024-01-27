@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Fetch Example</title>
+</head>
+<body>
+
+    <h1>Express Fetch Example</h1>
+
+    <button onclick="sendData()">Send Data</button>
+
+    <script>
+        async function sendData() {
+            const data = { message: 'Hello from the client!' };
+
+            try {
+                const response = await fetch('http://localhost:4000/api/data', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const responseData = await response.json();
+                console.log('Server Response:', responseData);
+            } catch (error) {
+                console.error('Error sending data:', error);
+            }
+        }
+    </script>
+
+</body>
+</html>
